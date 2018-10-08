@@ -631,7 +631,7 @@ public class TextAreaPainter extends JComponent implements TabExpander
 	public final void setWrapGuidePainted(boolean wrapGuide)
 	{
 		this.wrapGuide = wrapGuide;
-		textArea.repaint();
+		repaint();
 	} //}}}
 
 	//{{{ getFoldLineStyle() method

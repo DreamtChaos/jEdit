@@ -280,7 +280,7 @@ view.blockCaret=false
 view.electricBorders=3
 
 # Enable Notepad style
-view.enableNotepad=true
+view.enableNotepadStyle=true
 
 # Drag and drop of text
 view.dragAndDrop=true

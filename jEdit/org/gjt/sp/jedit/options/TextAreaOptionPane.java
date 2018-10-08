@@ -165,6 +165,7 @@ public class TextAreaOptionPane extends AbstractOptionPane
 		caretSettings.add(blinkCaret);
 		caretSettings.add(blockCaret);
 		caretSettings.add(thickCaret);
+		
 
 		addComponent(caretSettings,caretColor = new ColorWellButton(
 			jEdit.getColorProperty("view.caretColor")),
@@ -251,9 +252,9 @@ public class TextAreaOptionPane extends AbstractOptionPane
 		addComponent(insertCompletionWithDigit);
 		
 		/* Enable Notepad-like style */
-		enableNotepadStyle = new JCheckBox(jEdit.getProperty(
-				"options.textarea.enableNotepadStyle"));
-		enableNotepadStyle.setSelected(jEdit.getBooleanProperty("enableNotepadStyle"));
+		enableNotepadStyle = new JCheckBox(jEdit.getProperty("options.textarea" 
+				+ ".enableNotepadStyle"));
+		enableNotepadStyle.setSelected(jEdit.getBooleanProperty("view.enableNotepadStyle"));
 		addComponent(enableNotepadStyle);
 		
 		
@@ -275,6 +276,7 @@ public class TextAreaOptionPane extends AbstractOptionPane
 		jEdit.setBooleanProperty("view.caretBlink",blinkCaret.isSelected());
 		jEdit.setBooleanProperty("view.blockCaret",blockCaret.isSelected());
 		jEdit.setBooleanProperty("view.thickCaret",thickCaret.isSelected());
+		jEdit.setBooleanProperty("view.enableNotepadStyle", enableNotepadStyle.isSelected());
 		jEdit.setColorProperty("view.caretColor",caretColor
 			.getSelectedColor());
 		jEdit.setColorProperty("view.selectionColor",selectionColor
@@ -312,7 +314,6 @@ public class TextAreaOptionPane extends AbstractOptionPane
 		jEdit.setBooleanProperty("stripTrailingEOL", stripTrailingEOL.isSelected());
 		jEdit.setBooleanProperty("completeFromAllBuffers", completeFromAllBuffers.isSelected());
 		jEdit.setBooleanProperty("insertCompletionWithDigit", insertCompletionWithDigit.isSelected());
-		jEdit.setBooleanProperty("enableNotepadStyle", enableNotepadStyle.isSelected());
 		jEdit.setIntegerProperty("options.textarea.lineSpacing",
 					 Integer.valueOf(lineSpacing.getText()));
 		
@@ -328,6 +329,7 @@ public class TextAreaOptionPane extends AbstractOptionPane
 	private JCheckBox blinkCaret;
 	private JCheckBox blockCaret;
 	private JCheckBox thickCaret;
+	private JCheckBox enableNotepadStyle;
 	private ColorWellButton caretColor;
 	private ColorWellButton selectionColor;
 	private JCheckBox selectionFg;
@@ -349,7 +351,7 @@ public class TextAreaOptionPane extends AbstractOptionPane
 	private JCheckBox stripTrailingEOL;
 	private JCheckBox completeFromAllBuffers;
 	private JCheckBox insertCompletionWithDigit;
-	private JCheckBox enableNotepadStyle;
+
 	private JTextField lineSpacing;
 	//}}}
 
