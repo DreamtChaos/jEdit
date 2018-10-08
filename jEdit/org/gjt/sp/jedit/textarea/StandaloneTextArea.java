@@ -261,7 +261,7 @@ public class StandaloneTextArea extends TextArea
 	{
 		TextAreaPainter painter = getPainter();
 		painter.setBlockCaretEnabled(false);
-
+		painter.setNotepadEnabled(getBooleanProperty("view.enableNotepad"));
 		painter.setFont(getFontProperty("view.font"));
 		painter.setStructureHighlightEnabled(getBooleanProperty(
 			"view.structureHighlight"));

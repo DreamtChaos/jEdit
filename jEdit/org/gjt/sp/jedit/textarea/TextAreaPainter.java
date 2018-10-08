@@ -472,6 +472,29 @@ public class TextAreaPainter extends JComponent implements TabExpander
 		textArea.invalidateStructureMatch();
 	} //}}}
 
+	
+	//{{{ isNotepadEnabled() method
+	/**
+	 * Returns true if the notepad style should be drawn, false otherwise
+	 */
+	public final boolean isNotepadEnabled()
+	{
+		return notepad;
+	} //}}}
+	
+	//{{{ setNotepadEnabled() method
+	/**
+	 * Sets if the text-area should have notepad style drawn, false otherwise
+	 * @param notepad True if the notepad style should be drawn,
+	 * false otherwise
+	 */
+	public final void setNotepadEnabled(boolean notepad)
+	{
+		this.notepad = notepad;
+		repaint();
+
+	} //}}}
+	
 	//{{{ isBlockCaretEnabled() method
 	/**
 	 * Returns true if the caret should be drawn as a block, false otherwise.
@@ -608,7 +631,7 @@ public class TextAreaPainter extends JComponent implements TabExpander
 	public final void setWrapGuidePainted(boolean wrapGuide)
 	{
 		this.wrapGuide = wrapGuide;
-		repaint();
+		textArea.repaint();
 	} //}}}
 
 	//{{{ getFoldLineStyle() method
@@ -973,6 +996,7 @@ public class TextAreaPainter extends JComponent implements TabExpander
 
 	SyntaxStyle[] foldLineStyle;
 
+	boolean notepad;
 	boolean blockCaret;
 	boolean thickCaret;
 	boolean lineHighlight;
@@ -1021,7 +1045,8 @@ public class TextAreaPainter extends JComponent implements TabExpander
 		addExtension(TEXT_LAYER,new PaintText());
 		addExtension(TEXT_LAYER,new PaintSelectionText());
 		caretExtension = new PaintCaret();
-
+		addExtension(TEXT_LAYER, new PaintNotepad());
+		
 		extraLineSpacing = 0;
 	} //}}}
 
@@ -1509,7 +1534,24 @@ public class TextAreaPainter extends JComponent implements TabExpander
 			}
 		}
 	} //}}}
-
+	
+	//{{{ Paint Notepad Class
+	private class PaintNotepad extends TextAreaExtension{
+		
+		@Override
+		public void paintValidLine(Graphics2D gfx, int screenLine,
+				int physicalLine, int start, int end, int y)
+		{
+			if (notepad){
+				int i = getFontHeight();
+				while (i<getHeight()){
+					gfx.drawLine(0, i, getWidth(), i);
+					i+=getFontHeight();
+				}
+			}
+		}
+	} //}}}
+	
 	//}}}
 
 	//}}}

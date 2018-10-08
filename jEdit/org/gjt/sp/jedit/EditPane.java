@@ -1026,6 +1026,7 @@ public class EditPane extends JPanel implements BufferSetListener
 			"view.blockCaret"));
 		painter.setThickCaretEnabled(jEdit.getBooleanProperty(
 			"view.thickCaret"));
+		painter.setNotepadEnabled(jEdit.getBooleanProperty("view.enableNotepad"));
 		painter.setLineHighlightEnabled(jEdit.getBooleanProperty(
 			"view.lineHighlight"));
 		painter.setLineHighlightColor(
