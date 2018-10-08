@@ -166,7 +166,6 @@ public class TextAreaOptionPane extends AbstractOptionPane
 		caretSettings.add(blockCaret);
 		caretSettings.add(thickCaret);
 		
-
 		addComponent(caretSettings,caretColor = new ColorWellButton(
 			jEdit.getColorProperty("view.caretColor")),
 			GridBagConstraints.VERTICAL);
